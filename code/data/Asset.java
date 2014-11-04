@@ -1,0 +1,258 @@
+package data;
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import engine.Utils;
+import engine.Parameter;
+import org.jfree.data.time.*;
+
+public class Asset implements Comparable<Asset> {
+	
+	public String name; // asset's identifier
+	public Boolean badness = false; // marks if the asset fails to have prices for all times in one period.
+	public Vector<Price> data; //Data point - one open price/close price/volume with one date
+	
+	/*
+	 * Build a new asset from a datafile
+	 * Format is the same as yahoo finance historic CSV, 
+	 * with the first line skipped for info,
+	 * and one month's worth of info per line.
+	 * The filename is the name of the asset.
+	 *
+	 */
+	public Asset(String filename)
+	{
+		name = filename.substring(5, filename.length() -4);
+		data = new Vector<Price>();
+		
+		
+		BufferedReader reader;	
+       String line = null;	
+
+       Parameter param = Parameter.getInstance();
+		
+		String datefmt = param.getParam("asset date format");
+		if (datefmt == null)
+		{
+			System.err.println("ERROR: Please specify date format");
+			System.exit(1);
+		}
+		
+		String separator = param.getParam("data separator");
+		if (separator == null)
+		{
+			System.err.println("ERROR: Please specify data separator");
+			System.exit(1);
+		}
+		if (separator.compareToIgnoreCase("space") == 0)
+			separator = " ";
+		
+		String pripos = param.getParam("data price position");
+		if (pripos == null)
+		{
+			System.err.println("ERROR: Please specify price position");
+			System.exit(1);
+		}
+		String volpos = param.getParam("data volume position");
+		if (volpos == null)
+		{
+			System.err.println("ERROR: Please specify volume position");
+			System.exit(1);
+		}
+		
+		
+       try
+       {
+    	   reader =
+    		   new BufferedReader(new FileReader(new File(filename)));
+
+    	   // skipping first line
+    	   line = reader.readLine();
+    	   
+    	   while ((line = reader.readLine()) != null)
+       		{
+    		   String[] input = line.split(separator);
+    	   
+    		   SimpleDateFormat dateparser = new SimpleDateFormat(datefmt, new Locale("en"));
+    		   Date d = dateparser.parse(input[0]);
+    	   
+    		   data.add(new Price(d, 
+    				   Double.valueOf(input[Integer.valueOf(pripos)]),
+    				   Double.valueOf(input[Integer.valueOf(volpos)])));
+       		}
+    	   
+    	   Collections.sort(data);
+    	   
+    	   
+       } catch (Exception e)
+       {
+    	   System.err.print("Error opening file: " + filename + "\n");
+    	   System.err.print("Message: " + e.getMessage() + "\n\n");
+     	   System.exit(1);
+       }
+       	       	
+	}
+	public Asset(File f)
+	{
+		name = f.getName().substring(0, f.getName().length() -4);
+		data = new Vector<Price>();
+		
+		BufferedReader reader;	
+       String line = null;	
+       
+       Parameter param = Parameter.getInstance();
+		
+		String datefmt = param.getParam("asset date format");
+		if (datefmt == null)
+		{
+			System.err.println("ERROR: Please specify date format");
+			System.exit(1);
+		}
+		String separator = param.getParam("data separator");
+		if (separator == null)
+		{
+			System.err.println("ERROR: Please specify data separator");
+			System.exit(1);
+		}
+		if (separator.compareToIgnoreCase("space") == 0)
+			separator = " ";
+
+		String pripos = param.getParam("data price position");
+		if (pripos == null)
+		{
+			System.err.println("ERROR: Please specify price position");
+			System.exit(1);
+		}
+		String volpos = param.getParam("data volume position");
+		if (volpos == null)
+		{
+			System.err.println("ERROR: Please specify volume position");
+			System.exit(1);
+		}
+		
+		
+       try
+       {
+    	   reader =
+    		   new BufferedReader(new FileReader(f));
+
+    	   // skipping first line
+    	   line = reader.readLine();
+    	   
+    	   while ((line = reader.readLine()) != null)
+       		{
+    		   String[] input = line.split(separator);
+    	   
+    		   SimpleDateFormat dateparser = new SimpleDateFormat(datefmt, new Locale("en"));
+    		   Date d = dateparser.parse(input[0]);
+    	   
+    		   data.add(new Price(d, 
+    				   Double.valueOf(input[Integer.valueOf(pripos)]),
+    				   Double.valueOf(input[Integer.valueOf(volpos)])));
+       		}
+    	   
+    	   Collections.sort(data);
+    	   
+    	   
+       } catch (Exception e)
+       {
+    	   System.err.print("Error opening file: " + f.getAbsolutePath() + "\n");
+    	   System.err.print("Message: " + e.getMessage() + "\n\n");
+     	   System.exit(1);
+       }
+       	       	
+	}
+
+	// ordering for the Market class - name ordering.
+	public int compareTo(Asset a)
+	{
+		return name.compareTo(a.name);
+	}
+	
+	public String getName()
+	{
+		return name;
+	}
+	
+	// this returns 0 if the date is out of range
+	public Double getPriceByDate(Date d)
+	{
+		return getPriceByIndex(getIndexByDate(d));				
+	}
+	
+	/* Returns 0.0 if index is out of range */
+	public Double getPriceByIndex(int i)
+	{
+		if (i < 0 || i > data.size() - 1) 
+			return 0.0;
+		else 
+			return data.get(i).p;
+	}
+	
+	/** Returns the index in the asset for date d. 
+	 * If d is before the starting date of the asset, will 
+	 * return a negative index equivalent to the number of months 
+	 * before index 0. If d goes ABOVE the last index, then 
+	 * a invalid number will be returned - beware!  
+	 */
+	public int getIndexByDate(Date d)
+	{
+		return Utils.calcMonths(data.get(0).d, d);
+	}
+	
+	/*
+	public TimeSeries getCumLogRetTS()
+	{
+		
+		TimeSeries ts = new TimeSeries(name, Month.class);
+		for (int i = 1; i < data.size(); i++)
+		{
+			Double ret = Math.log(data.get(i).cp/data.get(i-1).cp);
+			ts.add(new Month(data.get(i).d), ret);
+		}
+			
+		return ts;
+		
+	}
+	public TimeSeries getLogRetTS()
+	{
+		TimeSeries ts = new TimeSeries(name, Month.class);
+		for (int i = 1; i < data.size(); i++)
+		{
+			Double ret = Math.log(data.get(i).cp/data.get(i-1).cp);
+			ts.add(new Month(data.get(i).d), ret);
+		}
+		
+		return ts;
+	}
+	*/
+	public TimeSeries getPriceTS(Date start, Date end)
+	{
+		TimeSeries ts = new TimeSeries(name, Month.class);
+		int limit = Utils.calcMonths(start, end) + 1;
+		Calendar c = Calendar.getInstance();
+		c.setTime(start);
+		for (int i = 0; i < limit; i++)
+		{			
+			ts.add(new Month(c.getTime()), getPriceByDate(c.getTime()));
+			c.add(Calendar.MONTH, 1);
+		}
+		
+		return ts;
+	}
+	
+	
+	public void dump()
+	{
+		
+		for (int i = 0; i < data.size(); i++)
+		{
+			System.err.print(data.get(i).p.toString() + "\n");
+		}
+		
+		
+		
+	}
+	
+}

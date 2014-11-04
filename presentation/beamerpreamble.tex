@@ -1,0 +1,172 @@
+%% General Beamer Presentation preable
+%% With multiple options and useful Macros
+%
+%
+% Original version by Felipe Campelo
+% Changes by Claus Aranha
+%
+%
+% Change History
+% 2013.09.11
+% - Added a change History
+
+%%% DEFINED MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Save space in lists. Use this after the opening of the list
+% \compresslist
+
+% Puts images in arbitrary sizes by specifying X and Y. 
+% \Put(X,Y){\includegraphics etc etc}
+
+% Blocks with variable horiontal sizes:
+% \begin{varblock}[.8\textwidth]{blocktitle}
+% \end{varblock}
+
+%%% Packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amssymb,amsmath}
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage{color}
+\usepackage{relsize} % For \smaller
+\usepackage{url} % For \url
+\usepackage{epstopdf} % Included EPS files automatically converted to PDF to include with pdflatex
+\usepackage{pgfpages} % necessary for note options, npages too
+\usepackage{multimedia} % for movies
+
+\usepackage[english]{babel}
+%\usepackage[latin1]{inputenc}
+\usepackage{CJKutf8} % Japanese text
+\usepackage{subfigure} % need to learn how to use subfigures
+
+\usepackage{times}
+\usepackage[T1]{fontenc}
+
+%%% OPTIONS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Gets rid of the nav bar
+\beamertemplatenavigationsymbolsempty
+
+%%% NOTE OPTIONS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Uncomment one of these for varied note effects
+
+%\setbeameroption{show notes} % Notes as extra slides
+%\setbeameroption{show notes on second screen = left} % Notes inserted in slides
+%\setbeameroption{show only notes} % Only notes
+
+%\setbeamertemplate{note page}[plain] % Uncomment this for simpler notes
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%For MindMaps
+% \usepackage{tikz}%
+% \usetikzlibrary{mindmap,trees,arrows}%
+
+%%% Color Definitions %%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\definecolor{bordercol}{RGB}{40,40,40}
+%\definecolor{headercol1}{RGB}{186,215,230}
+%\definecolor{headercol2}{RGB}{80,80,80}
+%\definecolor{headerfontcol}{RGB}{0,0,0}
+%\definecolor{boxcolor}{RGB}{186,215,230}
+
+%%% Theme Options %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\mode<presentation>
+{
+  % A tip: pick a theme you like first, and THEN modify the color theme, and then add math content.
+  % Warsaw is the theme selected by default in Beamer's installation sample files.
+
+  %\usetheme{AnnArbor}
+  %\usetheme{Antibes}
+  %\usetheme{Bergen}
+  %\usetheme{Berkeley}  % bem bacana - menu esquerdo
+  %\usetheme{Berlin}
+  %\usetheme{Boadilla}
+  %\usetheme{boxes}
+  \usetheme{CambridgeUS}  % bem bacana - menu superior
+  %\usetheme{Copenhagen}  % not good for multiple sections
+  %\usetheme{Darmstadt}  % Same as frankfurt with subsection names
+  %\usetheme{default}
+  %\usetheme{Dresden}
+  %\usetheme{Frankfurt}  % My ``standard'' // claus
+  %\usetheme{Goettingen}
+  %\usetheme{Hannover}  % bem bacana - menu esquerdo
+  %\usetheme{Ilmenau}
+  %\usetheme{JuanLesPins}
+  %\usetheme{Luebeck}
+  %\usetheme{Madrid}  %bacana
+  %\usetheme{Malmoe}
+  %\usetheme{Marburg}  % bem bacana - menu direito
+  %\usetheme{Montpellier}
+  %\usetheme{PaloAlto}  % bem bacana - menu esquerdo
+  %\usetheme{Pittsburgh}
+  %\usetheme{Rochester}  %bacana
+  %\usetheme{Singapore}
+  %\usetheme{Szeged}
+  %\usetheme{Warsaw}
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%% COLOR THEME
+  %\usecolortheme{albatross}		% azul escuro, massa
+  %\usecolortheme{beetle}		% cinza, menu azul
+  %\usecolortheme{crane}		% branco e amarelo, massa
+  %\usecolortheme{default}		% branco, azul clarinho
+  \usecolortheme{dolphin}		% azul e branco, legal
+  %\usecolortheme{dove}			% cinza e branco, feio
+  %\usecolortheme{fly}			% todo cinza, horrível
+  %\usecolortheme{lily}			% parece o default
+  %\usecolortheme{orchid}		% azul e branco, ok
+  %\usecolortheme{rose}			% branco e violeta-claro, bonito
+  %\usecolortheme{seagull}		% cinza, feio
+  %\usecolortheme{seahorse}		% nhé, meio feio
+  %\usecolortheme{sidebartab}		% Azul, branco, destaque na tab, interessante
+  %\usecolortheme{structure}		% bichado
+  %\usecolortheme{whale}		% Azul e branco, bem bonito
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%% OUTER THEME
+  % Theme for showing the section and sub section
+  \useoutertheme{default}
+  %\useoutertheme{infolines}
+  %\useoutertheme{miniframes}
+  %\useoutertheme{shadow}
+  %\useoutertheme{sidebar}
+  %\useoutertheme{smoothbars}
+  %\useoutertheme{smoothtree}
+  %\useoutertheme{split}
+  %\useoutertheme{tree}
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%% INNER THEME
+  %\useinnertheme{circles}
+  \useinnertheme{default}
+  %\useinnertheme{inmargin}
+  %\useinnertheme{rectangles}
+  %\useinnertheme{rounded}
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  % Changes the behavior of list uncovering, explore this // claus
+  \setbeamercovered{invisible} % or whatever (possibly just delete it)
+  % To change behavior of \uncover from graying out to totally
+  % invisible, can change \setbeamercovered to invisible instead of
+  % transparent. apparently there are also 'dynamic' modes that make
+  % the amount of graying depend on how long it'll take until the
+  % thing is uncovered.
+}
+
+%%% Macro for putting images at arbitrary places
+%% See http://tex.stackexchange.com/questions/34921/how-to-overlap-images-in-a-beamer-slide
+\def\Put(#1,#2)#3{\leavevmode\makebox(0,0){\put(#1,#2){#3}}}
+
+%%% Variable Block
+%% See http://tex.stackexchange.com/questions/12550/changing-default-width-of-blocks-in-beamer
+\newenvironment<>{varblock}[2][.9\textwidth]{%
+  \setlength{\textwidth}{#1}
+  \begin{actionenv}#3%
+    \def\insertblocktitle{#2}%
+    \par%
+    \usebeamertemplate{block begin}}
+  {\par%
+    \usebeamertemplate{block end}%
+  \end{actionenv}}
+
+%%% Save space in lists. Use this after the opening of the list %%%%%%%%%%%%%%%%
+\newcommand{\compresslist}{
+	\setlength{\itemsep}{1pt}
+	\setlength{\parskip}{0pt}
+	\setlength{\parsep}{0pt}
+}

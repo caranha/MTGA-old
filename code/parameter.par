@@ -1,0 +1,136 @@
+# USE # FOR COMMENTS
+
+######
+# FILEREADING PARAMETERS
+######
+
+# Location of the data directory
+data directory = /home/caranha/data/nasdaq
+
+# String used to read the date from the data files
+asset date format = yyyy-MM-dd
+index date format = yyyy-MM-dd
+
+# Character used to separate fields in the data file, may be space
+# data separator = space (if the separator is spaces)
+
+data separator = ,		
+index separator = ,
+
+# The position from the data row from where we take the price
+# First field is numbered 0 (where normally we find the date)
+data price position = 6
+data volume position = 5
+index price position = 6
+index volume position = 5
+
+
+#######
+# TRADING PARAMETERS
+#######
+
+# Determines the time unit used for trading - month is used if 
+# not defined
+# date unit = month			(not implemented)
+
+# Initial capital for trading simulation
+initial capital = 1000000
+
+# How many data points in the past are used to calculate the moving
+# average
+moving average = 12
+
+# Risk calculation method. Running is the mean/variance of the 
+# portfolio. Covariance is the component calculation of portfolio risk.
+risk type = running
+
+initial user date = 2006-00-05
+final user date = 2006-11-05
+initial trade date = 2007-00-05
+final trade date = 2007-11-05
+
+# Value of the riskless theoretical bond
+riskless return = 0.03
+
+
+## NOT USED
+# Number of scenarios to trade before retraining for dynamic data.
+scenario range = 1
+
+# Initial date for the scenario
+date = 2007-8-0
+
+
+######
+# DISPLAY PARAMETERS
+######
+
+# Name used to display the dataset
+data name = NASDAQ
+
+# Limit for displaying/calculating small assets.
+Asset Treshold = 0.03
+
+######
+# EXPERIMENT PARAMETERS
+######
+
+# Number of times to repeat the experiment (in case of repeating experiments)
+repeat experiment = 1
+
+# Experiment type = 0 - Memetic, 1 - sTBMA, 2 - mTBMA
+type = 2
+
+######
+# EVOLUTIONARY PARAMETERS
+######
+
+Random Seed = 73
+
+#Defines if the simulation will use GA or GP (only useful for the testing.Simulation object)
+Method = ga
+
+generation number = 200
+population size = 200
+elite size = 3
+immigrant size = 0
+mutation rate = 0.2
+crossover rate = 0.8
+Tournament K = 3
+
+### TREE PARAMETERS
+tree density = 1
+tree depth = 8
+
+### MEMETIC PARAMETERS
+meme chance = 0.0
+meme maxeval = 20
+# 0 -> Hill Climbing, 1-> Simulated annealing
+meme method = 1 
+
+# Hill climbing
+hill speed = 0.1
+hill delta = 0.333
+# Simulated annealing
+anne pop = 5
+anne accel = 0.5 
+
+### GA Parameters
+fill rate = 0.6
+change rate = 0.1
+array type = 1
+
+### Differential Evolution Parameters
+DE K value = 0.9
+DE C value = 0.9
+Init DE Population = 0
+Noman Control Parameter = 1.0
+Use SPX = 1
+SPX neighborhood parameter = 10
+
+### mTBMA Parameterss
+city size = 150
+migration chance = 0.2
+# Adaptive 0 - no change in param 1 - change in param
+adaptive = 0
+

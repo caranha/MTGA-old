@@ -1,0 +1,63 @@
+package testing;
+
+import data.*;
+import java.util.*;
+import engine.*;
+import ga.*;
+import memetic.*;
+import java.lang.management.*;
+import java.io.*;
+
+public class Testmain {
+	
+	public static void main(String[] args) {
+
+	long totalTime = 0;
+		
+	System.out.println(":Starting Simulation with parameter file: - " + args[0]);
+
+	
+	Parameter param = Parameter.getInstance(); 
+	try {
+		param.load(args[0]);		
+	}
+	catch (Exception e) {
+		System.err.print(e.getMessage());
+		System.exit(1);
+	} 
+
+	
+	String parameter;
+	Calendar c = Calendar.getInstance(); 	
+	Market mkt = Market.getInstance();
+	RNG die = RNG.getInstance();
+
+	parameter = param.getParam("data directory");
+	mkt.loadDir(parameter);	
+	
+	
+	parameter = param.getParam("date");
+	String[] date = parameter.split("-");
+	c.set(Integer.parseInt(date[0]),
+		  Integer.parseInt(date[1]),
+		  Integer.parseInt(date[2]));
+
+	parameter = param.getParam("Random Seed");
+	die.setSeed(Integer.parseInt(parameter));
+
+	for (int i = 0; i < mkt.assets.size(); i++)
+	{	
+		System.out.print(i + " " + mkt.assets.get(i).name + "   ");
+		if (i%5 == 0)
+			System.out.println();
+	}
+	
+	}
+
+	
+	
+
+	
+}
+
+
