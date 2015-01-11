@@ -1,8 +1,14 @@
-\BOOKMARK [2][]{Outline0.1}{Introduction}{}
-\BOOKMARK [3][]{Outline0.1.1.1}{Intro}{Outline0.1}
-\BOOKMARK [2][]{Outline0.2}{Optimization for Portfolio Selection}{}
-\BOOKMARK [3][]{Outline0.2.1.5}{Optimization}{Outline0.2}
-\BOOKMARK [2][]{Outline0.3}{The MTGA Algorithm}{}
-\BOOKMARK [3][]{Outline0.3.1.6}{Algorithm Description}{Outline0.3}
-\BOOKMARK [2][]{Outline0.4}{The MTGA Code}{}
-\BOOKMARK [3][]{Outline0.4.1.7}{About the Code}{Outline0.4}
+\BOOKMARK [2][]{Outline0.1}{Introduction}{}% 1
+\BOOKMARK [3][]{Outline0.1.1.1}{Introduction}{Outline0.1}% 2
+\BOOKMARK [3][]{Outline0.1.2.2}{Self Introduction}{Outline0.1}% 3
+\BOOKMARK [3][]{Outline0.1.3.4}{Outline}{Outline0.1}% 4
+\BOOKMARK [2][]{Outline0.2}{Optimization for Portfolio Selection}{}% 5
+\BOOKMARK [3][]{Outline0.2.1.6}{Optimization}{Outline0.2}% 6
+\BOOKMARK [2][]{Outline0.3}{Evolutionary Algorithms}{}% 7
+\BOOKMARK [3][]{Outline0.3.1.10}{Evolutionary Algorithms}{Outline0.3}% 8
+\BOOKMARK [3][]{Outline0.3.2.11}{Why Evolutionary Algorithms are good for this problem?}{Outline0.3}% 9
+\BOOKMARK [2][]{Outline0.4}{The MTGA Algorithm}{}% 10
+\BOOKMARK [3][]{Outline0.4.1.12}{Algorithm Description}{Outline0.4}% 11
+\BOOKMARK [3][]{Outline0.4.2.13}{Using the MTGA Algorithm}{Outline0.4}% 12
+\BOOKMARK [2][]{Outline0.5}{Questions?}{}% 13
+\BOOKMARK [3][]{Outline0.5.1.16}{Question Time}{Outline0.5}% 14

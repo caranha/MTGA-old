@@ -1,10 +1,16 @@
 \beamer@endinputifotherversion {3.10pt}
 \select@language {english}
 \beamer@sectionintoc {1}{Introduction}{1}{0}{1}
-\beamer@subsectionintoc {1}{1}{Intro}{1}{0}{1}
-\beamer@sectionintoc {2}{Optimization for Portfolio Selection}{5}{0}{2}
-\beamer@subsectionintoc {2}{1}{Optimization}{5}{0}{2}
-\beamer@sectionintoc {3}{The MTGA Algorithm}{6}{0}{3}
-\beamer@subsectionintoc {3}{1}{Algorithm Description}{6}{0}{3}
-\beamer@sectionintoc {4}{The MTGA Code}{7}{0}{4}
-\beamer@subsectionintoc {4}{1}{About the Code}{7}{0}{4}
+\beamer@subsectionintoc {1}{1}{Introduction}{1}{0}{1}
+\beamer@subsectionintoc {1}{2}{Self Introduction}{2}{0}{1}
+\beamer@subsectionintoc {1}{3}{Outline}{4}{0}{1}
+\beamer@sectionintoc {2}{Optimization for Portfolio Selection}{6}{0}{2}
+\beamer@subsectionintoc {2}{1}{Optimization}{6}{0}{2}
+\beamer@sectionintoc {3}{Evolutionary Algorithms}{10}{0}{3}
+\beamer@subsectionintoc {3}{1}{Evolutionary Algorithms}{10}{0}{3}
+\beamer@subsectionintoc {3}{2}{Why Evolutionary Algorithms are good for this problem?}{11}{0}{3}
+\beamer@sectionintoc {4}{The MTGA Algorithm}{12}{0}{4}
+\beamer@subsectionintoc {4}{1}{Algorithm Description}{12}{0}{4}
+\beamer@subsectionintoc {4}{2}{Using the MTGA Algorithm}{13}{0}{4}
+\beamer@sectionintoc {5}{Questions?}{16}{0}{5}
+\beamer@subsectionintoc {5}{1}{Question Time}{16}{0}{5}

@@ -5,32 +5,152 @@
 \title[]{Introduction to the MTGA} 
 \author[Claus Aranha]{Claus Aranha\\{\footnotesize University of
     Tsukuba\\caranha\@@cs.tsukuba.ac.jp}}
+\date{01/15/2015}
 
 \begin{document}
 
 \section{Introduction}
-\subsection{Intro}
+\subsection{Introduction}
 \begin{frame}
   \maketitle
 \end{frame}
 
+\subsection{Self Introduction}
 \begin{frame}
-  \frametitle{Outline (1/2)}
+  \frametitle{Academic History}
+  \begin{itemize}
+    \item {\bf 1980} Born in Sao Luiz, Brasil
+    \item {\bf 2005} Moved to Japan to study at the University of Tokyo
+    \item {\bf 2007} Concluded the Master Degree in Computer Sciences
+      at the University of Tokyo, in Iba Laboratory
+    \item {\bf 2010} Concluded the PhD Degree in Computer Sciences at
+      the University of Tokyo, in Iba Laboratory
+    \item {\bf 2011} Researcher at the Federal University of Rio de
+      Janeiro, Brazil
+    \item {\bf 2012} Assistant Professor at University of Tsukuba
+  \end{itemize}
 \end{frame}
 
 \begin{frame}
-  \frametitle{Outline (2/2)}
+  \frametitle{Research Interests}
+  \begin{block}{2007-2010: Financial Portfolio Optimization}
+    Studied portfolio Weight optimization in my PhD in University of Tokyo
+  \end{block}
+  \begin{block}{2011: Medical Data}
+    Clustering of Medical data at Federal University of Rio de Janeiro
+  \end{block}
+  \begin{block}{2012-2014: Seismic Modeling}
+    Modeling of Seismic Events using Evolutionary Algorithms at Tsukuba University
+  \end{block}
+\end{frame}
+
+\subsection{Outline}
+\begin{frame}
+  \frametitle{Outline} 
+
+  Today, we will talk about methods for parameter
+  selection in financial engineering problems.
+
+  \begin{block}{What we will discuss today}
+    \begin{enumerate}
+      \item What is optimization;
+      \item How can optimization be used for financial engineering;
+      \item Evolutionary Algorithms -- a type of optimization;
+      \item MTGA -- Evolutionary Algorithms for Portfolio Weight Selection;
+    \end{enumerate}
+  \end{block}
 \end{frame}
 
 \begin{frame}
-  \frametitle{Disclaimer}
+  \frametitle{Disclaimer} 
+
+  This presentation describes an stochastic optimization algorithm for
+  parameter tuning. Stochastic methods are by nature {\bf random}.
+
+  \medskip
+
+  \alert{We do not guarantee any results from using
+    the algorithm presented today}.
+  
+  \medskip
+
+  Results depend on the implementation and the restrictions that apply
+  to each problem. Please consult with your engineers before using
+  this software.
 \end{frame}
 
 \section{Optimization for Portfolio Selection}
 \subsection{Optimization}
 \begin{frame}
-  \frametitle{What is Optimization}
+  \frametitle{What is an Optimization Problem?}
+  Many problems can be described as a mathematical function:
+  \begin{equation}
+    U(W) = a_1w_1 + a_2w_2 + \frac{a_3w_3}{a_4w_4}
+  \end{equation}
+  \begin{equation}
+    W = w_1,w_2,w_3,w_4
+  \end{equation}
+  In these problems, $U$ is the \structure{Utility Function}, $W$ are
+  the \structure{Parameter set}.
+  
+  \medskip
+  
+  \begin{block}{}
+    Our goal is to choose $W$ in order to maximixe (or minimize) $U$.
+  \end{block}
 \end{frame}
+
+\begin{frame}
+  \frametitle{Optimization examples}
+  Let's think of some common optimization problems:
+  \begin{itemize}
+    \item Distribution of workers in a factory's schedule;
+    \item Allocation of materials to a restaurant's franchise;
+    \item Distribution of research grants to universities;
+    \item Allocation of radio channels to different uses;
+    \item etc.
+  \end{itemize}
+  \medskip
+  All these problems involve the allocation of a \structure{resource}
+  to reach \structure{some goal}.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Optimization in Financial Engineering} 
+  The field of financial engineering also has many problems that can
+  be described as Optimization problems:
+
+
+  \begin{block}{Remember:}
+    The goal of optimization is to choose the parameter set $W$ in
+    order to maximize or minimize the utility function $U$.
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Types of Optimization algorithms}
+  % Hill Climbing
+  % Random Search
+\end{frame}
+
+\begin{frame}
+  \frametitle{When do we want to use each optimization type?}
+  % Random search and hill climbing (Least Squares)
+\end{frame}
+
+
+\section{Evolutionary Algorithms}
+\subsection{Evolutionary Algorithms}
+\begin{frame}
+  \frametitle{What are Evolutionary Algorithms?}
+\end{frame}
+
+\subsection{Why Evolutionary Algorithms are good for this problem?}
+\begin{frame}
+  \frametitle{Evolutionary Algorithms and Random Search}
+\end{frame}
+
+% Explain again the part of random search
 
 \section{The MTGA Algorithm}
 \subsection{Algorithm Description}
@@ -38,13 +158,29 @@
   \frametitle{Outline}
 \end{frame}
 
-\section{The MTGA Code}
-\subsection{About the Code}
+% MTGA uses both random search and hill climbing
+% Why is the MTGA specially tuned for portfolio Problems?
+
+\subsection{Using the MTGA Algorithm}
 \begin{frame}
-  \frametitle{Where can I get it?}
+  \frametitle{Where to acquire the MTGA Code}
+  % Website
 \end{frame}
 
 \begin{frame}
-  \frametitle{What can I do with it?}
+  \frametitle{What can you do with this code?}
+  % license
+\end{frame}
+
+\begin{frame}
+  \frametitle{Caveats -- points to pay attention}
+  %% fixing the code
+  %% restrictions (lots, costs, etc)
+\end{frame}
+
+\section{Questions?}
+\subsection{Question Time}
+\begin{frame}
+  \frametitle{Time For questions}
 \end{frame}
 \end{document}
